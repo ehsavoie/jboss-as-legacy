@@ -11,12 +11,8 @@ if [ "x$JBOSS_HOME" = "x" ]; then
     return 1
 fi
 
-cp -Rf naming/lib/target/module/org $JBOSS_HOME/modules/system/layers/base/
-cp -Rf naming/jnp/target/module/org $JBOSS_HOME/modules/system/layers/base/
-cp -Rf full/lib/target/module/org $JBOSS_HOME/modules/system/layers/base/
-cp -Rf full/ejb3/target/module/org $JBOSS_HOME/modules/system/layers/base/
-cp -Rf full/ejb3-bridge/target/module/org $JBOSS_HOME/modules/system/layers/base/
-cp -Rf full/tx/target/module/org $JBOSS_HOME/modules/system/layers/base/
+cp -Rf lib/target/module/org $JBOSS_HOME/modules/system/layers/base/
+cp -Rf jnp/target/module/org $JBOSS_HOME/modules/system/layers/base/
 
 
 echo "Edit configuration file - for instance $JBOSS_HOME/standalone/configuration/standalone.xml"
@@ -44,33 +40,4 @@ echo
 echo "5. If you want to configure a HA JNDI JNP Server, you can add :"
 echo "<distributed-cache cache-ref=\"default\" cache-container=\"singleton\"/>"
 echo
-echo "To enable EJB3:"
-echo "1 Add extension definition in <extensions>."
-echo
-echo "<extension module=\"org.jboss.legacy.ejb3\"/>"
-echo
-echo "2. Add subsystem definition(no args == default IP/port)"
-echo
-echo "<subsystem xmlns=\"urn:jboss:domain:legacy-ejb3:1.0\">"
-echo "    <ejb3-registrar/>"
-echo "</subsystem>"
-echo
-echo "To enable EJB3-Bridge:"
-echo "1 Add extension definition in <extensions>."
-echo
-echo "<extension module=\"org.jboss.legacy.ejb3.bridge\"/>"
-echo
-echo "2. Add subsystem definition(no args == default IP/port)"
-echo
-echo "<subsystem xmlns=\"urn:jboss:domain:legacy-ejb3-bridge:1.0\"/>"
-echo
-echo
-echo "To enable User-transaction:"
-echo "1 Add extension definition in <extensions>."
-echo
-echo "<extension module=\"org.jboss.legacy.tx\"/>"
-echo
-echo "2. Add subsystem definition"
-echo
-echo "<subsystem xmlns=\"urn:jboss:domain:legacy-tx:1.0\"/>"
 echo
